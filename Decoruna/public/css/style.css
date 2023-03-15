@@ -48,6 +48,9 @@ button:active, button:focus, button:hover {
 .dropdown.header-nav-list__item {
     display: block;
 }
+.dropdown.header-nav-list__item1 {
+    display: block;
+}
 
 a {
     transition: color 0.3s;
@@ -1110,6 +1113,9 @@ a + button {
 
 @media (max-width: 980px) {
     .header-maine-menu.header-nav-list__item {
+        padding-bottom: 0;
+    }
+    .header-maine-menu.header-nav-list__item1 {
         padding-bottom: 0;
     }
 }
@@ -2601,6 +2607,72 @@ form > input::placeholder {
         min-width: max-content;
         display: block;
     }
+      .header-nav-list__item1 {
+        max-width: -webkit-max-content;
+        max-width: -moz-max-content;
+        max-width: max-content;
+        margin-top: 0;
+        position: relative;
+    }
+
+    .header-nav-list__item1 button {
+        text-decoration: none;
+        font-family: "FuturaPT";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 23px;
+        color: #FFFFFF;
+        border: unset;
+        background: unset;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .header-nav-list__item1 button:hover, .header-nav-list__item1 button:focus, .header-nav-list__item1 button:active {
+        box-shadow: unset;
+        color: #fff;
+        text-shadow: 1px 1px 3px #fff;
+    }
+
+    .header-nav-list__item1 .dropdown-content {
+        position: absolute;
+        display: none;
+    }
+
+    .header-nav-list__item1 .dropdown-content.show {
+        position: absolute;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        background: white;
+        padding: 17px 23px;
+        border-radius: 3px;
+        box-shadow: 4px 4px 7px -1px rgba(0, 0, 0, 0.2509803922);
+        z-index: 5;
+        bottom: -7px;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+        gap: 15px;
+
+    }
+
+    .header-nav-list__item1 .dropdown-content.show .header-maine-menu-link {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 18px;
+        letter-spacing: 0em;
+        text-align: left;
+        text-transform: unset;
+        min-width: -webkit-max-content;
+        min-width: -moz-max-content;
+        min-width: max-content;
+        display: block;
+    }
+
 }
 
 @media (max-width: 980px) {
