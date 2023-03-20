@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::group(['prefix' => '/products', 'controller' => ProductController::class], function () {
+    Route::get('/', 'products')->name('products.index');
+    Route::get('/categories/{category}', 'category')->name('products.category');
+    Route::get('/{product}', 'product')->name('products.show');
+});
 Route::get('/', [MainController::class, 'main'])->name('main');
 Route::get('/promotions', [MainController::class, 'promotions'])->name('promotions');
 Route::get('/about', [MainController::class, 'about'])->name('about');

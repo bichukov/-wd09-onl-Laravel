@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 use App\Models\Banner;
+use App\Models\Category;
 
 class MainController extends Controller
 {
   public function main()
   {
       $banners=Banner::all();
+      $ba=Category::all();
+
    return view('main', ['banners'=>$banners]);
   }
+
+
 
   public function promotions()
   {

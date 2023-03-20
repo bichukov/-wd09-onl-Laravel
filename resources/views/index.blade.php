@@ -42,29 +42,26 @@
                     <div class="dropdown header-maine-menu">
                         <button onclick="myFunction()" class="dropbtn">Каталог</button>
                         <div class="dropdown-content header-maine-menu__nav-list align-items-center">
-                            <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">кровати</a></div>
-                            <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">столы</a></div>
-                            <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">стулья</a></div>
-                            <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">кресла</a></div>
-                            <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">диваны</a></div>
-                            <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">мебель для хранения</a></div>
-                            <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">матрасы</a></div>
-                            <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">консоли</a></div>
-                            <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">пуфы</a></div>
+                            @foreach($items as $item)
+                                <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">{{ $item->name }}</a></div>
+                                {{--                        <li><a href="{{ $item->url }}">{{ $item->name }}</a></li>--}}
+                            @endforeach
+
+
                         </div>
                     </div>
-                    <div class="header-nav-list__item"><a href="{{route('promotions')}}" class="header-item-link">Акции</a></div>
-                    <div class="header-nav-list__item"><a href="{{route('about')}}" class="header-item-link">О нас</a></div>
+                    <div class="header-nav-list__item"><a href="{{route('promotions')}}" class="{{ request()->routeIs('promotions') ? 'active' : '' }} header-item-link">Акции</a></div>
+                    <div class="header-nav-list__item"><a href="{{route('about')}}" class="{{ request()->routeIs('about') ? 'active' : '' }} header-item-link">О нас</a></div>
                     <div class="dropdown header-maine-menu header-nav-list__item">
                         <button onclick="myFunction()" class="dropbtn">Доставка и оплата</button>
                         <div class="dropdown-content header-maine-menu__nav-list align-items-center">
-                            <div class="header-maine-list__item"><a href="{{route('delivery-moscow')}}" class="header-maine-menu-link">Доставка по Москва и МО</a></div>
-                            <div class="header-maine-list__item"><a href="{{route('delivery-regions')}}" class="header-maine-menu-link">Доставка по Регионам РФ</a></div>
+                            <div class="header-maine-list__item"><a href="{{route('delivery-moscow')}}" class="{{ request()->routeIs('delivery-moscow') ? 'active' : '' }} header-maine-menu-link">Доставка по Москва и МО</a></div>
+                            <div class="header-maine-list__item"><a href="{{route('delivery-regions')}}" class="{{ request()->routeIs('delivery-regions') ? 'active' : '' }} header-maine-menu-link">Доставка по Регионам РФ</a></div>
                         </div>
                     </div>
-                    <div class="header-nav-list__item"><a href="{{route('return')}}" class="header-item-link">Возврат и обмен товара</a></div>
-                    <div class="header-nav-list__item"><a href="{{route('designers')}}" class="header-item-link">Дизайнерам</a></div>
-                    <div class="header-nav-list__item"><a href="{{route('contacts')}}" class="header-item-link">Контакты</a></div>
+                    <div class="header-nav-list__item"><a href="{{route('return')}}" class="{{ request()->routeIs('return') ? 'active' : '' }} header-item-link">Возврат и обмен товара</a></div>
+                    <div class="header-nav-list__item"><a href="{{route('designers')}}" class="{{ request()->routeIs('designers') ? 'active' : '' }} header-item-link">Дизайнерам</a></div>
+                    <div class="header-nav-list__item"><a href="{{route('contacts')}}" class="{{ request()->routeIs('contacts') ? 'active' : '' }} header-item-link">Контакты</a></div>
                     <button class="mob-button-phone" onClick='location.href="tel:+79647802164"'>Связаться с нами</button>
                     <button class="sdsdsd2 mob-button-search ">Поиск по каталогу</button>
 
@@ -89,9 +86,12 @@
                         <div>
                             <input type="button" class="header-button" value="Заказать консультацию">
                         </div>
-                        <a href="/kj" class="header-logo">
 
-                        </a>
+                        <a  <?php if($_SERVER['REQUEST_URI'] != '/') { ?> href="/"<?php } ?> class="header-logo">  </a>
+
+
+
+
                         <div>
 
                             <form class="header-search flex">
@@ -108,19 +108,17 @@
 
             <div class="header-maine-menu header-maine-menu-hid">
                 <div class="header-maine-menu__nav-list align-items-center">
-                    <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">кровати</a></div>
-                    <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">столы</a></div>
-                    <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">стулья</a></div>
-                    <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">кресла</a></div>
-                    <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">диваны</a></div>
-                    <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">мебель для хранения</a></div>
-                    <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">матрасы</a></div>
-                    <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">консоли</a></div>
-                    <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">пуфы</a></div>
+                    @foreach($items as $item)
+                        <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">{{ $item->name }}</a></div>
+                        {{--                        <li><a href="{{ $item->url }}">{{ $item->name }}</a></li>--}}
+                    @endforeach
+
                 </div>
             </div>
 
+            <ul>
 
+            </ul>
         </header>
 
         @yield('content')
@@ -138,33 +136,32 @@
                 <div class="footer-menu__nav-list align-items-center flex-direction-colum ">
 
                     <div class="footer-menu-list__item"><a class="footer-maine-menu-link">DEKORUNA</a></div>
-                    <div class="footer-menu-list__item"><a href="{{route('about')}}" class="footer-menu-link">О нас</a></div>
-                    <div class="footer-menu-list__item"><a href="{{route('promotions')}}" class="footer-menu-link">Акции</a></div>
+                    <div class="footer-menu-list__item"><a href="{{route('about')}}" class="{{ request()->routeIs('about') ? 'active' : '' }} footer-menu-link">О нас</a></div>
+                    <div class="footer-menu-list__item"><a href="{{route('promotions')}}" class="{{ request()->routeIs('promotions') ? 'active' : '' }} footer-menu-link">Акции</a></div>
                     <div class="dropdown header-maine-menu header-nav-list__item1 footer-menu-list__item">
                         <button onclick="myFunction()" class="dropbtn">Доставка и оплата</button>
                         <div class="dropdown-content header-maine-menu__nav-list align-items-center">
-                            <div class="header-maine-list__item"><a href="{{route('delivery-moscow')}}" class="header-maine-menu-link">Доставка по Москва и МО</a></div>
-                            <div class="header-maine-list__item"><a href="{{route('delivery-regions')}}" class="header-maine-menu-link">Доставка по Регионам РФ</a></div>
+                            <div class="header-maine-list__item"><a href="{{route('delivery-moscow')}}" class="{{ request()->routeIs('delivery-moscow') ? 'active' : '' }} header-maine-menu-link">Доставка по Москва и МО</a></div>
+                            <div class="header-maine-list__item"><a href="{{route('delivery-regions')}}" class="{{ request()->routeIs('delivery-regions') ? 'active' : '' }} header-maine-menu-link">Доставка по Регионам РФ</a></div>
                         </div>
                     </div>
-                    <div class="footer-menu-list__item"><a href="{{route('return')}}" class="footer-menu-link">Возврат и обмен товара</a></div>
-                    <div class="footer-menu-list__item"><a href="{{route('designers')}}" class="footer-menu-link">Дизайнерам</a></div>
+                    <div class="footer-menu-list__item"><a href="{{route('return')}}" class="{{ request()->routeIs('return') ? 'active' : '' }} footer-menu-link">Возврат и обмен товара</a></div>
+                    <div class="footer-menu-list__item"><a href="{{route('designers')}}" class="{{ request()->routeIs('designers') ? 'active' : '' }} footer-menu-link">Дизайнерам</a></div>
                 </div>
                 <div class="footer-menu__nav-list align-items-center flex-direction-colum ">
                     <div class="footer-menu-list__item"><a class="footer-maine-menu-link">КАТАЛОГ</a></div>
                     <div class="footer-menu-list__item"><a href="#" class="footer-menu-link">Все товары</a></div>
-                    <div class="footer-menu-list__item"><a href="#" class="footer-menu-link">Кровати</a></div>
-                    <div class="footer-menu-list__item"><a href="#" class="footer-menu-link">Столы</a></div>
-                    <div class="footer-menu-list__item"><a href="#" class="footer-menu-link">Стулья</a></div>
-                    <div class="footer-menu-list__item"><a href="#" class="footer-menu-link">Кресла</a></div>
+                    @foreach($items1 as $item2)
+                        <div class="footer-menu-list__item"><a href="#" class="footer-menu-link">{{ $item2->name }}</a></div>
+                    @endforeach
+
                 </div>
                 <div class="footer-menu__nav-list align-items-center flex-direction-colum ">
                     <div class="footer-menu-list__item"><a class="footer-maine-menu-link">КАТАЛОГ</a></div>
-                    <div class="footer-menu-list__item"><a href="#" class="footer-menu-link">Диваны</a></div>
-                    <div class="footer-menu-list__item"><a href="#" class="footer-menu-link">Мебель для хранения</a></div>
-                    <div class="footer-menu-list__item"><a href="#" class="footer-menu-link">Матрасы</a></div>
-                    <div class="footer-menu-list__item"><a href="#" class="footer-menu-link">Консоли</a></div>
-                    <div class="footer-menu-list__item"><a href="#" class="footer-menu-link">Пуфы</a></div>
+                    @foreach($items2 as $item2)
+                        <div class="footer-menu-list__item"><a href="#" class="footer-menu-link">{{ $item2->name }}</a></div>
+                    @endforeach
+
                 </div>
                 <div class="footer-menu__nav-list align-items-center flex-direction-colum ">
                     <div class="footer-menu-list__item"><a class="footer-maine-menu-link">КОНТАКТЫ</a></div>

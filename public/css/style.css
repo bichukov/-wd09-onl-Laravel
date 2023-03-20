@@ -6516,6 +6516,16 @@ form > input::placeholder {
         margin-top: 15px;
     }
 }
+.active{
+    box-shadow: unset;
+
+    text-shadow: 1px 1px 3px #14ffc5;
+}
+.active.footer-menu-link{
+    box-shadow: unset;
+    color: #fff;
+    text-shadow: 1px 1px 3px #fff;
+}
 
 @media (max-width: 768px) {
     .filter-sort input:checked ~ .filter-check__text {
