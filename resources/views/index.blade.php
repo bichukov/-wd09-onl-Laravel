@@ -109,8 +109,8 @@
             <div class="header-maine-menu header-maine-menu-hid">
                 <div class="header-maine-menu__nav-list align-items-center">
                     @foreach($items as $item)
-                        <div class="header-maine-list__item"><a href="#" class="header-maine-menu-link">{{ $item->name }}</a></div>
-                        {{--                        <li><a href="{{ $item->url }}">{{ $item->name }}</a></li>--}}
+
+                        <div class="header-maine-list__item @if ($categoryId == $item->id) active @endif"><a href="{{route('products.category', $item->id )}}" class="header-maine-menu-link ">{{ $item->name }}</a></div>
                     @endforeach
 
                 </div>

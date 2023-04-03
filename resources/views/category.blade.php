@@ -131,10 +131,10 @@
             </aside>
             <div class="catalog__main">
                @foreach($products as $product)
-@dump($product);
-                    <a href="{{ route('products.show', ['product' => $product->id]) }}" class="catalog__prod">
+@dd($products);
+                    <a href="{{ route('products.category', ['product' => $product->id]) }}" class="catalog__prod">
                         <span class="catalog__prod_img">
-                            <img src="{{$product->preview_img}}" alt="">
+                            <img src="assets/images/catalog.jpg" alt="">
                         </span>
                         <p class="catalog__prod_title">{{$product->title}}</p>
                         @if($product->is_promotion)

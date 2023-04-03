@@ -23,7 +23,9 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('*', function($view) {
             $view->with(['items' => Category::all()]);
+
         });
+
 
         View::composer('*', function($view) {
             $ds=Category::where('is_active', 1)->limit(4)->get();

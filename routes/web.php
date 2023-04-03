@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -15,8 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['prefix' => '/products', 'controller' => ProductController::class], function () {
+
     Route::get('/', 'products')->name('products.index');
-    Route::get('/categories/{category}', 'category')->name('products.category');
+    Route::get('/category/{category}', 'products')->name('products.category');
     Route::get('/{product}', 'product')->name('products.show');
 });
 Route::get('/', [MainController::class, 'main'])->name('main');
