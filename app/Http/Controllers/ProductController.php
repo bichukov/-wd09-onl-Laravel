@@ -16,7 +16,7 @@ class ProductController extends Controller
 
         return view('product', [
             'product' => $product,
-            'categoryId' => $categoryId
+
         ]);
 
     }
@@ -33,7 +33,7 @@ class ProductController extends Controller
         return view('products', [
             'products' => $products->get(),
 
-            'categoryId' => $categoryId
+
         ]);
 
     }
